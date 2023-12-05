@@ -19,4 +19,14 @@ const products = this.products.find( prod )
   if (products)
   return "El producto ya existe"
 }
+    if (this.products.length = 0){
+    products.id = 1
+    this.products.push ( products )
+} 
+    else{
+        products.id = this.products.length + 1
+    this.products.push ( products)
 }
+}
+const products = new ProductManager()
+console.log(products.getProducts())
