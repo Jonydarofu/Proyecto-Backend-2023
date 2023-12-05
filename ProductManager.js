@@ -15,8 +15,8 @@ class ProductManager {
 
     )
     { return 'Completar Campos'}
-const products = this.products.find( prod )
-  if (products)
+const result = this.products.find( prod )
+  if (result)
   return "El producto ya existe"
 }
     if (this.products.length = 0){
@@ -26,7 +26,10 @@ const products = this.products.find( prod )
     else{
         products.id = this.products.length + 1
     this.products.push ( products)
+    
+    return ' producto agregado'
 }
 }
 const products = new ProductManager()
 console.log(products.getProducts())
+console.log(products.addProduct({tittle: 'producto uno', description:'bicicleta Venzo', price:'500000', imagen: 'imagen', stock: '20', code: 'abc123'}))
