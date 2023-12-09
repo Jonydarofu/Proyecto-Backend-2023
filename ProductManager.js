@@ -6,28 +6,33 @@ class ProductManager {
     return this.products;
   }
   addProduct(products){
-    if( products.tittle ||
-        products.description ||
-        products.price ||
-        products.code ||
-        products.imagen ||
-        products.stock ||        
+    if( !products.title ||
+        !products.description ||
+        !products.price ||
+        !products.code ||
+        !products.imagen ||
+        !products.stock)
 
-    )
     { return 'Completar Campos'}
-const result = this.products.find( prod )
+const result = this.products.find( prod === products.code )
   if (result)
   return "El producto ya existe"
 }
-    if (this.products.length = 0){
+    if (this.products.length === 0){
     products.id = 1
     this.products.push ( products )
 } 
     else{
         products.id = this.products.length + 1
-    this.products.push ( products)
+    this.products.push ( products )
     
-    return ' producto agregado'
+    return ' producto agregado '
+}
+getProductsByld (pid){
+  const result = this.products.find ( products === pid)
+  if (!result)
+  {return ' no existe el producto '}
+  return result 
 }
 }
 const products = new ProductManager()
