@@ -1,0 +1,10 @@
+[
+  {
+    "nombre": "Jonathan",
+    "apellido": "Romero Fucina",
+    "userName": "jonydarofu",
+    "password": "123456",
+    "salt": "",
+    "newPass": ""
+  }
+]
