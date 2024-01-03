@@ -59,3 +59,4 @@ console.log(
     password: "123456",
   })
 );
+console.log(users.validateUser("Jonathan", "123456"));
