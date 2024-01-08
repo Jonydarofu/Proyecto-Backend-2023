@@ -1,46 +1,46 @@
 class ProductManager {
   constructor() {
-    this.products = [];
+    this.product = [];
   }
   getProducts() {
-    return this.products;
+    return this.product;
   }
-  addProduct(products) {
+  addProduct(product) {
     if (
-      !products.title ||
-      !products.description ||
-      !products.price ||
-      !products.code ||
-      !products.imagen ||
-      !products.stock
+      !product.title ||
+      !product.description ||
+      !product.price ||
+      !product.code ||
+      !product.imagen ||
+      !product.stock
     ) {
       return "Completar Campos";
     }
-    const result = this.products.find((prod) => prod === products.code);
-    if (products) {
-      return "El producto ya existe";
+    const result = this.product.find((prod) => prod === product.code);
+    if (product) {
+      return "El producto existe";
     }
     if (this.products.length === 0) {
-      products.id = 1;
-      this.products.push(products);
+      product.id = 1;
+      this.product.push(product);
     } else {
-      products.id = this.products.length + 1;
-      this.products.push(products);
+      product.id = this.product.length + 1;
+      this.product.push(product);
     }
     return " producto agregado ";
   }
   getProductsByld(pid) {
-    const result = this.products.find(products === pid);
+    const result = this.product.find(product === pid);
     if (!result) {
       return " no existe el producto ";
     }
     return result;
   }
 }
-const products = new ProductManager();
-console.log(products.getProducts());
+const product = new ProductManager();
+console.log(product.getProducts());
 console.log(
-  products.addProduct({
+  product.addProduct({
     title: "producto uno",
     description: "bicicleta Venzo",
     price: "500000",
