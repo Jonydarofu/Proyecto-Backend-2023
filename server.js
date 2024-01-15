@@ -30,6 +30,7 @@ app.get("/products", (req, res) => {
 });
 
 app.post("/products", (req, res) => {
+  const { nombre, linea } = req.body;
   res.send("create products");
 });
 
