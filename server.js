@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const userRouter = require("./src/routes/user.router");
 const cartsRouter = require("./src/routes/carts.router");
 const ProductManager = require("./ProductManager");
@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-let products = [
+const products = [
   { id: 1, nombre: "Venzo", linea: "Thorn" },
   { id: 2, nombre: "Venzo", linea: "Loki" },
   { id: 3, nombre: "Venzo", linea: "Skyline" },
@@ -25,10 +25,28 @@ app.get("/api/product/:uid", (req, res) => {
   res.send(product);
 });
 
-app.get("/users", (req, res) => {
+app.get("/products", (req, res) => {
   res.send(products);
 });
 
+app.post('/products',(req,res)=>{
+  res.send('create products')
+})
+
+app.put('/products/:uid',(req, res)=>{
+  res.send('update products')
+})
+
+app.delete('/products/:uid', (req,res)=>{
+  res.send('Eliminiar producto')
+})
+
+app.get('/query', (req, res)=>{
+  const {nombre, linea} = req.query
+  const product = products.find( product => product.nombre === nombre)
+  res.status(200).send(product)
+})
+
 app.listen(() => {
-  console.log("Puerto");
+  console.log("Puerto 8080");
 });
