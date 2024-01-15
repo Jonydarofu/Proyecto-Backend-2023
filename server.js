@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const userRouter = require("./src/routes/user.router");
 const cartsRouter = require("./src/routes/carts.router");
 const ProductManager = require("./ProductManager");
@@ -29,23 +29,24 @@ app.get("/products", (req, res) => {
   res.send(products);
 });
 
-app.post('/products',(req,res)=>{
-  res.send('create products')
-})
+app.post("/products", (req, res) => {
+  res.send("create products");
+});
 
-app.put('/products/:uid',(req, res)=>{
-  res.send('update products')
-})
+app.put("/products/:uid", (req, res) => {
+  res.send("update products");
+});
 
-app.delete('/products/:uid', (req,res)=>{
-  res.send('Eliminiar producto')
-})
+app.delete("/products/:uid", (req, res) => {
+  res.send("Eliminiar producto");
+});
 
-app.get('/query', (req, res)=>{
-  const {nombre, linea} = req.query
-  const product = products.find( product => product.nombre === nombre)
-  res.status(200).send(product)
-})
+app.get("/query", (req, res) => {
+  const { nombre, linea } = req.query;
+  const product = products.find((product) => product.nombre === nombre);
+
+  res.status(200).send(product);
+});
 
 app.listen(() => {
   console.log("Puerto 8080");
