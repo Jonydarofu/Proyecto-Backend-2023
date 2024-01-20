@@ -3,7 +3,7 @@ class ProductManager {
     this.product = [];
   }
   getProducts() {
-    return this.product;
+    return this.products;
   }
   addProduct(product) {
     if (
@@ -14,23 +14,23 @@ class ProductManager {
       !product.imagen ||
       !product.stock
     ) {
-      return "Completar Campos";
+      return "Completar campos del producto";
     }
-    const result = this.product.find((prod) => prod === product.code);
-    if (product) {
+    const result = this.product.find(prod => prod.code === product.code);
+    if (result) {
       return "El producto existe";
     }
     if (this.products.length === 0) {
       product.id = 1;
       this.product.push(product);
     } else {
-      product.id = this.product.length + 1;
-      this.product.push(product);
+      product.id = this.products.length + 1;
+      this.products.push(product);
     }
     return " producto agregado ";
   }
   getProductsByld(pid) {
-    const result = this.product.find(product === pid);
+    const result = this.product.find(prod => prod.id === pid);
     if (!result) {
       return " no existe el producto ";
     }
@@ -38,7 +38,6 @@ class ProductManager {
   }
 }
 const product = new ProductManager();
-console.log(product.getProducts());
 console.log(
   product.addProduct({
     title: "producto uno",
@@ -49,3 +48,5 @@ console.log(
     code: "abc123",
   })
 );
+//console.log(products.getProducts());
+console.log (products.getProductsByld(1));
