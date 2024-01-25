@@ -1,5 +1,8 @@
+const { REFUSED } = require('node:dns')
 const { readFile } = require('node:fs')
 const fs = require ('node:fs/promises')
+const userRouter = require ('../routes/')
+const cartsRouter = require ('../routes/')
 
 class cartsManagerFS {
     constructor(){
@@ -20,7 +23,7 @@ class cartsManagerFS {
             let newCart
             id: carts.length + 1,
             product : []
-            
+
         } catch (error)
         return 
     }

@@ -1,11 +1,17 @@
 const express = require("express");
-const userRouter = require("./src/routers/user.router");
-const cartsRouter = require("./src/routers/carts.router");
-const ProductManager = require("./ProductManager");
+const userRouter = require('./src/routers/products.router');
+const cartsRouter = require('./src/routers/carts.router');
+const ProductManager = require('./ProductManager');
+const handlebars = require ('express-handlebars')
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.engine('handlebars', handlebars.engine())
+app.set('views', __dirname+'./views'); 
+app.set('view engine', 'handlebars');
 
 const products = [
   { id: 1, nombre: "Venzo", linea: "Thorn" },
@@ -49,6 +55,6 @@ app.get("/query", (req, res) => {
   res.status(200).send(product);
 });
 
-app.listen(() => {
+app.listen(8080, () => {
   console.log("Puerto 8080");
 });
