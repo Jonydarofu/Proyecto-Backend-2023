@@ -7,9 +7,13 @@ const usersSchema = new mongoose.Schema({
   last_name: String,
   email: {
     type: String,
+    require: true,
     unique: true,
   },
-  password: String,
+  password: {
+    type: String,
+    require: true,
+  },
 });
 
 const userModel = mongoose.model(userCollection, usersSchema);

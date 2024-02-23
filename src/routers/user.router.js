@@ -17,7 +17,7 @@ catch (error){
     const { uid } = req.params;
     res.send("user");
   })
-  .post("/", (req, res) => {
+  .post("/", async (req, res) => {
     const {nombre, apellido} = req.body
     if (!nombre || !apellido ) {
       return res.status(400).send({ error: "Faltan datos"})

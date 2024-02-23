@@ -1,3 +1,13 @@
+GET http://localhost:8080/api/users
+
+POST http://localhost:8080/api/users
+content-type: application/json
+{ 
+    "first_name":""
+    "last_name":""
+    "email":""
+}
+
 POST http://localhost:8080/api/carts
 
 GET http://localhost:8080/api/carts/7170
