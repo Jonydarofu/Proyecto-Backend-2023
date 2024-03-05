@@ -1,8 +1,9 @@
+import { Schema, model } from "mongoose";
 const mongoose = require("mongoose");
 
 const userCollection = "users";
 
-const usersSchema = new mongoose.Schema({
+const usersSchema = new Schema({
   first_name: String,
   last_name: String,
   email: {
