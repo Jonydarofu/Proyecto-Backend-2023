@@ -3,14 +3,24 @@ const mongoose = require("mongoose");
 
 const userCollection = "users";
 
-const usersSchema = new Schema({
-  first_name: String,
-  last_name: String,
+const usersSchema = new mongoose.Schema({
+  first_name: {
+    type: String,
+    index: true,
+  },
+
+  last_name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
   email: {
     type: String,
     require: true,
     unique: true,
   },
+
   password: {
     type: String,
     require: true,
