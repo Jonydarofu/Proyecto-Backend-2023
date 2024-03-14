@@ -25,7 +25,7 @@ class cartsManagerFS {
             product : []
 
         } catch (error)
-        return 
+        return  
     }
     async getCartById(){}
     async addProductToCart(){}
