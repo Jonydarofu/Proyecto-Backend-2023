@@ -39,9 +39,13 @@ exports.connectDB = async () => {
     //console.log('Ordenes',order),
 
     let ordersResult = await orderModel.aggregate([
-      { $match: { size:'' } },
-      { $group: {_id:'$name', totalStock: {$sum: '$stock'}}},
-    ])
+      { $match: { size: "" } },
+      { $group: { _id: "$name", totalStock: { $sum: "$stock" } } },
+      { $sort: { totalStock: -1 } },
+      { $group: { _id: 1, orders: { $push: "$$ROOT" } } },
+      { $project: { _id: 0, orders: "$.orders" } },
+      { $merge: { into: "reports" } },
+    ]);
   } catch (error) {
     console.log("Error al conectar a la base de datos");
   }
