@@ -4,10 +4,14 @@ const userRouter = require("./src/routers/products.router");
 const pruebasRouter = require("./src/routes/apis/pruebas.router");
 const cartsRouter = require("./src/routers/carts.router");
 const ProductManager = require("./ProductManager");
+const sessionRouter = require("./src/routes/apis/sessions.router");
 
 const { connect } = require("./src/config/connectDB");
+
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+
+const FileStore = require("session-file-store");
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
@@ -19,8 +23,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser("palabrasecretaparafirmarcookie"));
 
+//session config
+const FileStore = FileStore(session);
 app.use(
   session({
+    store: new FileStore({
+      path: "./sessions",
+      ttl: 3600,
+      retries: 0,
+    }),
     secret: "secretCoder",
     resave: true,
     saveUninitialized: true,
