@@ -11,9 +11,17 @@
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser("palabrasecretaparafirmarcookie"))
+app.use(cookieParser("palabrasecretaparafirmarcookie"));
+app.use(
+  session({
+    secret: "secretCoder",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const { connect, mongo, get } = require("mongoose");
 
 const connectDB = async () => {

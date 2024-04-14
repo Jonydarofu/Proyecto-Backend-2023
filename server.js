@@ -1,23 +1,40 @@
 const express = require("express");
+const handlebars = require("express-handlebars");
 const userRouter = require("./src/routers/products.router");
+const pruebasRouter = require("./src/routes/apis/pruebas.router");
 const cartsRouter = require("./src/routers/carts.router");
 const ProductManager = require("./ProductManager");
-const handlebars = require("express-handlebars");
+
 const { connect } = require("./src/config/connectDB");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 const app = express();
 const PORT = 8080 || process.env.PORT;
-connectDB;
+connectDB();
 
 app.use(express.static(_dirname + "/public"));
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+
+app.use(cookieParser("palabrasecretaparafirmarcookie"));
+
+app.use(
+  session({
+    secret: "secretCoder",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "./views");
 app.set("view engine", "handlebars");
+
+// app.use('/', viewRouter)
+app.use("/api/sessions", sessionRouter);
+app.use("/pruebas", pruebasRouter);
+app.use("/api/users", userRouter);
 
 const products = [
   { id: 1, nombre: "Venzo", linea: "Thorn" },
