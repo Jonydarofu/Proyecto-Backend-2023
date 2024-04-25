@@ -1,12 +1,19 @@
 GET http://localhost:8080/api/users
 
-POST http://localhost:8080/api/users
+POST http://localhost:8080/api/sessions/register
 content-type: application/json
 { 
     "first_name":"Jony",
     "last_name":"Romero",
-    "email":"jd@gmail.com"
+    "email":"jd@gmail.com",
+    "password": "123456"
 }
+
+POST  http://localhost:8080/api/sessions/login
+Content-Type: application/json
+
+{"email":"jd@gmail.com",
+"password":"123456"}
 
 POST http://localhost:8080/api/carts
 
