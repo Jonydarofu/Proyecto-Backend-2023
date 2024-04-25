@@ -33,7 +33,7 @@ catch (error){
         status:'success',
         userCreate: result
       })
-  }});
+  });
 
   router.put ('/:uid', async (req, res)=>{
     const { uid } = req.params  

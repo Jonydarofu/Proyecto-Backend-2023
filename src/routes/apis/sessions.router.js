@@ -2,10 +2,10 @@ const { Router } = require("express");
 const { auth } = require("../../middleware/authentication.middleware");
 
 const router = Router();
-
+const sessionRouter = new UserDaMongo();
 router.post("/login", (req, res) => {
-  const { username, password } = req.body;
-
+  const { first_name, last_name, username, password } = req.body;
+  console.log(first_name, last_name, username, password);
   if (username !== "jony" || password !== "123456")
     return res.send("login failed");
 
