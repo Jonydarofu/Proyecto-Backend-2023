@@ -57,5 +57,29 @@ passport.use(
       }
     }
   )
+
+  passport.use('github', new GithubStrategy({
+    clientID: 'Iv23limP4l4PWnqqJhHs',
+    clientSecret:'77006d370f221d72c411ea98227d921e3e29627b',
+    callbackURL:'http://localhost:8080/apis/sessions/githubcallback'
+  }, async(accessToken, refreshToken, profile, done)=>{
+    console.log('profile:', profile)
+    try{
+        let user = await userModel.findOne({email: profile._json.email})
+        if(!user){
+            let newuser = {
+                first_name: profile.username,
+                last_name: profile.username,
+                email: profile._json.email,
+                password: ''
+            }
+            let result = await userModel.create (newUser)
+            return done (null,result)
+        }
+        return done (null, user)
+    } catch (error){
+        done(error)
+    }
+  }))
 );
 module.exports = { initializePassport };
