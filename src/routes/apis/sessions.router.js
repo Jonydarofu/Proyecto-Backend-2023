@@ -4,7 +4,6 @@ const passport = require("passport");
 const {userModel} = require('../../models/user')
 const  router = Router();
 
-const router = Router();
 const sessionRouter = new UserDaMongo();
 router.post("/login", (req, res) => {
   const { first_name, last_name, username, password } = req.body;
