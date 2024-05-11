@@ -22,13 +22,21 @@ router.get("/current", auth, (req, res) => {
 });
 
 router.post("/register", passport.authenticate("register", {
-    failureRedirect: "/apis/sessions/faillogin",
+    failureRedirect: "/apis/sessions/faillogin"
   }),
   async (req, res) => {
     if (!req.user)
       return res
         .status(401)
         .send({ status: "error", error: "creadential invalid" });
+
+router.get('/failregister', async (req, res) => {
+  res.send({error: 'Fail on register'})
+})
+
+router.post ('/login', passport.authenticate('login', {failureRedirect: '/apis/sessions/faillogin'}), async (req,res) => {
+  if (!req.user) return res.status(401).send({ status: "error", error:'creadential invalid' })
+})
 
     req.session.user = {
       first_name: req.user.first_name,
